@@ -1,33 +1,79 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>TP2</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+   <head>
+       <style>
+         
+		 
+     form { background-color:#888;
+           height:400px;
+		   width:24%;
+		   border:5px solid black;
+		   padding-bottom-right-radius:5px;
+		   padding:100px 20px 50px 30px;
+		   margin:10px 10px 50px 200px;
+		   box-shadow:5px 5px 10px black inset;
+		   padding-top:20px;
+		   padding-left:50px;
+          }	
 
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
+.error{
+            
+            background-color: pink;
+		    border:1px solid black;
+		    padding:5px;
+	  }	
 
-        <style>
-          body{
-              background-color: #e9ebee;              
-              font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-              font-size: 16px;
-              margin: 0 auto;
-              max-width: 800px;              
-          }
-        </style>
-        
-        <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-        <!--<link rel="stylesheet" href="style.css">-->
-        <!--<script src="js/main.js"></script>-->
-    </head>
-    <body>        
-        <h1>tp2</h1>
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-        <img src="../galilee.png" alt="Logo Galilee"/>
-    </body>
+	  
+	  .resultat{
+            
+            background-color: green;
+		    border:1px solid black;
+		    padding:5px;
+	  }	
+	  
+         
+      </style>
+	  
+   <script>
+   
+       function validation()                                 
+         { 
+             var n = document.forms["myForm"]["name"];         
+             if (name.value == "")
+			 { 
+                 document.getElementById('errorname').innerHTML="La saisie du nom est obligatoire ";  
+                 name.focus(); 
+                 return false; 
+             }
+			 /* else if document.getElementById("name").value.length */
+			 
+			else{
+                
+				 document.getElementById("resultatname").innerHTML = "Bienvenue " + document.querySelector("#name").value;
+                 }
+         }
+		 
+		 
+      </script>
+	  
+
+   </head>
+   <body>
+      <form name="myForm" onsubmit="return validation()">
+	  
+	     <h2>Saisie d'une fiche "Personne" </h2>
+	         <p> Nom: <input type="text" name="name" id="name" class="field-long" required='required'  minlength="5" maxlength='20'/> 
+		     <p> Prenom: <input type="text"  id="prenom" class="field-long" required='required'  minlength="5" maxlength='20'/> 
+		     <p> Date de naissance : <input type="date" id="datemax" name="datemax" max="1979-12-31"> </p>
+             <p> Adresse:   <input type="text" id="lname" name="lname"> </p>
+             <p>Mail: <input type="email" id="email" name="email" autocomplete="off">   </p>
+          		
+          <div class="error" id="errorname"> </div> </p>
+		  <div class="resultat" id="resultatname"> </div>
+		 		 
+         <p>   <input type="button" value="Valider" onclick="validation()"> </p>
+		 
+      </form>
+   </body>
 </html>
