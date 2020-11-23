@@ -4,7 +4,7 @@
        <style>
          
 		 
-     form { background-color:#888;
+     form { background-color:#666;
            height:400px;
 		   width:24%;
 		   border:5px solid black;
@@ -25,7 +25,7 @@
 
 	  
 	  .resultat{
-            
+            color: #FFFFFF; 
             background-color: green;
 		    border:1px solid black;
 		    padding:5px;
@@ -38,38 +38,36 @@
    
       
 		 
-		 function validation()                                 
+		function validation()                                 
          { 
-             var name = document.forms["myForm"]["name"];         
-             if (name.value == "")
+             var prenom = document.forms["myForm"]["prenom"];         
+             if (prenom.value == "")
 			 { 
                  document.getElementById('errorname').innerHTML="La saisie du nom est obligatoire ";  
-                 name.focus(); 
+                 prenom.focus(); 
                  return false; 
              }
-					
 			 
+					 
 			 else{
                  
-				 document.getElementById("resultatname").innerHTML = "Bienvenue " + document.querySelector("#name").value;
+				 document.getElementById("resultatname").innerHTML = "Bienvenue " + document.querySelector("#prenom").value;
                  }
-         }
+         }  
 		 
-		 
-		 
+	
       </script>
-	  
-
+	
    </head>
-   <body>
-      <form name="myForm" onsubmit="return validation()">
+	<body>
+      <form name="myForm"  id = formulaire onsubmit="return validation()">
 	  
 	     <h2>Saisie d'une fiche "Personne" </h2>
-	         <p> Nom: <input type="text" name="name" id="name" class="field-long" required='required' placeholder="Veuillez entrez votre nom" minlength=5 maxlength='20'/> 
-		     <p> Prenom: <input type="text"  id="prenom" class="field-long" required='required'  placeholder="Veuillez entrez votre prenom" minlength="5 maxlength='20'/> 
-		     <p> Date de naissance : <input type="date" id="datemax" name="datemax" max="1979-12-31"> </p>
-             <p> Adresse:   <input type="text" id="lname" name="adresse" minlength=5 maxlength="50"  > </p>
-             <p>Mail: <input type="email" id="email" name="email" minlength=5 maxlength="30" autocomplete="off">   </p>
+	         <p> Nom: <input type="text" name="name" id="name"  required='required' placeholder="Veuillez entrer votre nom" minlength='5' maxlength='20'/> 
+		     <p> Prenom: <input type="text" name="prenom" id="prenom"  required='required'  placeholder="Veuillez entrer votre prenom" minlength='5' maxlength='20'/> 
+		     <p> Date de naissance : <input type="date" id="datemax" name="datemax" max="1979-12-31"  placeholder="Veuillez entrer votre date de naissance"> </p>
+             <p> Adresse:   <input type="text" id="lname" name="adresse" minlength=5 maxlength="50" placeholder="Veuillez entrer votre adresse" > </p>
+             <p>Mail: <input type="email" id="email" name="email" minlength=5 maxlength="30" autocomplete="off" placeholder="Veuillez entrer votre e-mail">   </p>
           		
           <div class="error" id="errorname"> </div> </p>
 		  <div class="resultat" id="resultatname"> </div>
@@ -81,3 +79,11 @@
 	  
    </body>
 </html>
+	
+	
+	
+	
+	
+	
+	
+	
