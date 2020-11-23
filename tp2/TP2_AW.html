@@ -1,0 +1,91 @@
+
+
+<!DOCTYPE html>
+<html>
+   <head>
+       <style>
+         
+		 
+     form { background-color:#666;
+           height:400px;
+		   width:24%;
+		   border:5px solid black;
+		   padding-bottom-right-radius:5px;
+		   padding:100px 20px 50px 30px;
+		   margin:10px 10px 50px 200px;
+		   box-shadow:5px 5px 10px black inset;
+		   padding-top:20px;
+		   padding-left:50px;
+          }	
+
+.error{
+            
+            background-color: pink;
+		    border:1px solid black;
+		    padding:5px;
+	  }	
+
+	  
+	  .resultat{
+            color: #FFFFFF; 
+            background-color: green;
+		    border:1px solid black;
+		    padding:5px;
+	  }	
+	  
+         
+      </style>
+	  
+   <script>
+   
+      
+		 
+		function validation()                                 
+         { 
+             var prenom = document.forms["myForm"]["prenom"];         
+             if (prenom.value == "")
+			 { 
+                 document.getElementById('errorname').innerHTML="La saisie du nom est obligatoire ";  
+                 prenom.focus(); 
+                 return false; 
+             }
+			 
+					 
+			 else{
+                 
+				 document.getElementById("resultatname").innerHTML = "Bienvenue " + document.querySelector("#prenom").value;
+                 }
+         }  
+		 
+		 
+		 	 
+	
+
+
+		 
+		 
+		 
+      </script>
+	  
+
+   </head>
+   <body>
+      <form name="myForm"  id = formulaire onsubmit="return validation()">
+	  
+	     <h2>Saisie d'une fiche "Personne" </h2>
+	         <p> Nom: <input type="text" name="name" id="name"  required='required' placeholder="Veuillez entrer votre nom" minlength='5' maxlength='20'/> 
+		     <p> Prenom: <input type="text" name="prenom" id="prenom"  required='required'  placeholder="Veuillez entrer votre prenom" minlength='5' maxlength='20'/> 
+		     <p> Date de naissance : <input type="date" id="datemax" name="datemax" max="1979-12-31"  placeholder="Veuillez entrer votre date de naissance"> </p>
+             <p> Adresse:   <input type="text" id="lname" name="adresse" minlength=5 maxlength="50" placeholder="Veuillez entrer votre adresse" > </p>
+             <p>Mail: <input type="email" id="email" name="email" minlength=5 maxlength="30" autocomplete="off" placeholder="Veuillez entrer votre e-mail">   </p>
+          		
+          <div class="error" id="errorname"> </div> </p>
+		  <div class="resultat" id="resultatname"> </div>
+		 		 
+         <p>   <input type="button" value="Valider" onclick="validation()"> </p>
+		 
+     </form>
+	  
+	  
+   </body>
+</html>
