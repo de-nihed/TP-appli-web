@@ -1,25 +1,87 @@
-
-
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <title> TP3 </title>
 		<!-- jquery pour pouvoir utiliser les composants JS de boostap (modal, tooltip...) -->
-        <script src="js/jquery-3.2.1.slim.min.js"></script>
+        <script src="jquery-3.2.1.slim.min.js"></script>
         <!-- CSS boostrap -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <script src="js/popper.min.js"></script>
+        <link rel="stylesheet" href="bootstrap.min.css">
+        <script src="popper.min.js"></script>
         <!-- composants JS de boostrap (modal http://getbootstrap.com/docs/4.0/components/modal/ , collapse...) -->
-        <script src="js/bootstrap.min.js"></script>
-		<script src="js/form-jquery-validation.js"></script>
-    </head>
+        <script src="bootstrap.min.js"></script>
+		<script src="form-jquery-validation.js"></script>
+		
+        <script src='jquery-3.5.1.js'> </script>
+	   
 	
+	 <style>
+		 
+		   form { background-color:#ADD8E6;
+           height:800px;
+		   width:50%;
+		   border:5px solid black;
+		   padding-bottom-right-radius:1px;
+		   padding:100px 20px 50px 30px;
+		   margin:10px 10px 50px 200px;
+		   box-shadow:5px 5px 10px black inset;
+		   padding-top:20px;
+		   padding-left:50px;
+          }	
+		 </style>
+	    <!--
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ 
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  -->
+ 
 
         <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
        <!-- <link rel="stylesheet" href="style.css">
-        <script src="js/main.js"></script> -->
-    
+      <!--  <script src="js/main.js">-->
+		
+		<script src="https://code.jquery.com/jquery-1.12.4.js"> </script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	    
+	<script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+		 
+		<script>
+		
+		
+$(document).ready(function () {
+ $("#button").click(function (event) {
+     event.preventDefault();
+
+       if (($("#nom").val() && $("#prenom").val() && $("#date").val() && $("#adresse").val() && $("#email").val()) != "") {
+       $('#myModal').modal({ show: true })
+         $(".modal-title").text("Bienvenue " + $("#prenom").val());
+
+            var city = $("#adresse").val();
+            var date = $("#date").val();
+
+            $(".modal-body").html(`Vous êtes nés ${date} et vous habitez :
+           <a class="link"  href="http://maps.google.com/maps?" >
+	  <img src="https://maps.googleapis.com/maps/api/staticmap?markers=${city}&zoom=14&size=400x300&scale=2&key=AIzaSyAkmvI9DazzG9p77IShsz_Di7-5Qn7zkcg"/>
+		   
+
+       else {
+
+           $('#myModal').modal("show")
+           $(".modal-body").html('Veuillez remplir tous les champs SVP');
+              }
+   });
+
+});
+     
+		</script>
+	    </head>
+	
+	
    <body>
    <div class="container">
       <form>
@@ -41,7 +103,7 @@
   
     <div class="form-group">
 	     <label for="date ">Date de naissance:</label>
-	     <input type="text" class="form-control" id="date" name="date" placeholder="jj/mm/aaaa">
+	     <input type="text" class="form-control" id="date" name="date" placeholder=" Veuillez entrer  votre date de naissance sous forme jj/mm/aaaa">
 	</div>
 			 
 	<div class="form-group">
@@ -52,17 +114,20 @@
 			 
 	<div class="form-group">
 	      <label for="email">Email </label>
-	      <input type="email" class="form-control" id="email"  placeholder="Veuillez entrer votre @ mail">
-	</div>	     
-		     
+	      <input type="text" class="form-control" id="email"  placeholder="Veuillez entrer votre @ mail">
+	</div>	 
 
-        
+    <div class="form-group">
+	      <label for="datepicker"> Date </label>
+	      <input type="text" class="form-control" id="datepicker" placeholder=" Veuillez entrer la date du jour ">
+	</div>	
+		     
+           
        <button type="submit" class="btn btn-primary" id="button">Valider</button>
 		 
       </form>
 	 </div> 
-	 
-<div class="modal" tabindex="-1" role="dialog" id="myModal">
+	   <div class="modal" tabindex="-1" role="dialog" id="myModal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -85,4 +150,13 @@
 	 
    </body>
 </html>
-
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
