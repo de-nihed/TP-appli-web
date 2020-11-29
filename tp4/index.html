@@ -1,20 +1,21 @@
 <!doctype html>
-	<html><head>
-	    <meta charset="utf-8">
-	    
-	    <title>Contacts</title>
-	    <link rel="stylesheet" href="bootstrap.min.css">
-		<script src="jquery-3.2.1.slim.min.js"></script>
-	    <script src="popper.min.js"></script>
-	    <script src="bootstrap.min.js"></script>
-	    <script src='jquery-3.5.1.js'></script>
-	    <script src="form-jquery-validation.js"></script>
-	    <script src="gps.js"></script>
-	    <script src="store.js"></script>
+	<html>
+	<head>
+	<meta charset="utf-8">
+	<title>Contacts</title>
+	
+	<link rel="stylesheet" href="bootstrap.min.css">
+    <script src="jquery-3.2.1.slim.min.js"></script>
+	<script src="popper.min.js"></script>
+	<script src="bootstrap.min.js"></script>
+	<script src='jquery-3.5.1.js'></script>
+	<script src="form-jquery-validation.js"></script>
+	<script src="gps.js"></script>
+	<script src="store.js"></script>
 	 
 	
 <style>		
-form { background-color:#3CB371;
+form { background-color:#09EE90;
            height:1200px;
 		   width:70%;
 		   border:5px solid black;
@@ -24,14 +25,20 @@ form { background-color:#3CB371;
 		   box-shadow:5px 5px 10px black inset;
 		   padding-top:20px;
 		   padding-left:50px;
-          }	
+     }	
 
 		
 </style>		
 	
 <script>
 
-$(document).ready(function () {
+
+$(document).ready(function () { 
+	$("#gps").on("click",function(){ 
+	getLocation();
+	});
+
+
    $(document).keyup(function() {
      var NbCar_Nom = $('#nom').val().length;
      var NbCar_Pre = $('#prenom').val().length;
@@ -52,8 +59,39 @@ $(document).ready(function () {
 	 $('#compteur_E').text(msg);
 	 
    });
-	      
-		
+	
+	
+
+$("#valider").on("click",function store(event) { 
+   event.preventDefault();
+    
+   var V_Nom= document.getElementById("nom");
+   var V_Prenom= document.getElementById("prenom");
+   var V_Date= document.getElementById("date");
+   var V_Adresse= document.getElementById("adresse");
+   var V_Email= document.getElementById("email");     
+	
+   if($("#nom").val() !== "" && $("#prenom").val() !== "" && $("#date").val() !== "" && $("#adresse").val() !== "" && $("#email").val() !== "" ){
+
+   localStorage.setItem("nom",V_Nom.value);
+   localStorage.setItem("prenom",V_Prenom.value);
+   localStorage.setItem("date",V_Date.value);
+   localStorage.setItem("adresse",V_Adresse.value);
+   localStorage.setItem("email",V_Email.value);
+
+   
+   document.querySelector("table tbody").innerHTML = document.querySelector("table tbody").innerHTML +
+   '<tr><td>'+localStorage.getItem("nom")+
+   '</td><td>'+localStorage.getItem("prenom") +
+   '</td><td>'+localStorage.getItem("date")+
+   '</td><td><a href="https://maps.google.com/maps?q=' +localStorage.getItem("adresse")+'">'+localStorage.getItem("adresse") +
+   '</a></td><td><a href=mailto:>'+localStorage.getItem("email")+'</a></td>';
+   
+   
+    }
+  
+  });
+	
 });
 
 </script>
@@ -84,7 +122,7 @@ $(document).ready(function () {
 			
   <div class="form-row">
      <div class="form-group col-2">
-       <label for="prenom">PrÃ©nom</label>
+       <label for="prenom">Prenom</label>
      </div>
      <div class="form-group col">
         <input type="text" class="form-control" placeholder="Veuillez entre votre prenom" id="prenom">
@@ -117,7 +155,7 @@ $(document).ready(function () {
    </div>
 </div>
   <div class="form-group col-1">
-     <button onclick="getLocation()" type="button" class="btn btn-warning" id="gps">ðŸ“ GPS</button>
+     <button onclick="getLocation()" type="button" class="btn btn-warning" id="gps"> GPS</button>
    </div>
   <div class="col-1">
    </div>
@@ -142,7 +180,7 @@ $(document).ready(function () {
            
 <div class="form-row">
    <div class="form-group col">
-     <button id="valide" type="button" class="btn btn-primary" >Ajouter</button>
+     <button id="valider" type="button" class="btn btn-primary" >Ajouter</button>
    </div>
  </div>
  
@@ -153,7 +191,7 @@ $(document).ready(function () {
         <thead>
           <tr>
             <th>Nom</th>
-            <th>PrÃ©nom</th>
+            <th>Prenom</th>
             <th>Date de naissance</th>
             <th>Adresse</th>
             <th>Mail</th>
@@ -161,7 +199,7 @@ $(document).ready(function () {
         </thead>
         <tbody>
           <tr>
-            <td>oConnor</td>
+            <td> Connor </td>
             <td>Sarah</td>
             <td>21/01/2000</td>
             <td>
@@ -210,8 +248,7 @@ $(document).ready(function () {
 </form>
 	
 </body>
-</html>	
-		
+</html>			
 		
 		
 		
