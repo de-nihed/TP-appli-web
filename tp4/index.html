@@ -78,7 +78,9 @@ $("#valider").on("click",function store(event) {
    localStorage.setItem("date",V_Date.value);
    localStorage.setItem("adresse",V_Adresse.value);
    localStorage.setItem("email",V_Email.value);
-
+   $('#success').addClass("alert alert-success").text("Bravo! le formulaire est sauvegardé.");
+      $("#table").show();
+      $("#liste_des_contacts").show()
    
    document.querySelector("table tbody").innerHTML = document.querySelector("table tbody").innerHTML +
    '<tr><td>'+localStorage.getItem("nom")+
